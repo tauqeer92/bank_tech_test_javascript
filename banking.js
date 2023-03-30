@@ -10,16 +10,12 @@ class Banking {
 
     deposit(amount) {
         this.balance += amount
-        this.transactions.push({id: this.num, credit: amount})
         this.statement.addDeposit(amount, this.balance)
-        return this.statement.printStatement()
     }
 
     withdraw(amount) {
         this.balance -= amount
-        this.transactions.push({id: this.num, debit: amount})
         this.statement.addWithdrawal(amount, this.balance)
-        return this.statement.printStatement()
     }
 
     readBalance() {
@@ -33,7 +29,11 @@ class Banking {
 
 // const statement = new Statement()
 // const banking = new Banking(statement)
-// console.log(banking.deposit(100))
+// banking.deposit(500)
+// banking.deposit(200)
+// banking.withdraw(100)
+// banking.withdraw(50)
+// console.log(statement.printStatement())
 
 module.exports = Banking
 

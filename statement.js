@@ -1,18 +1,19 @@
 class Statement {
     constructor() {
-        this.statement = 'date || credit || debit || balance'
+        this.transactions = ['date || credit || debit || balance']
     }
 
+
     printStatement() {
-        return this.statement
+        return this.transactions.join('')
     }
 
     addDeposit(amount, balance) {
-        this.statement += `\n14/01/2023 || ${amount} || || ${balance}`
+        this.transactions.splice(1, 0, `\n14/01/2023 || ${amount} || || ${balance}`)
     }
 
     addWithdrawal(amount, balance) {
-        this.statement += `\n14/01/2023 || || ${amount} || ${balance}`
+        this.transactions.splice(1, 0, `\n14/01/2023 || || ${amount} || ${balance}`)
     }
 
 
