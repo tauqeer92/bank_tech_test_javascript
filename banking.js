@@ -1,5 +1,8 @@
+const Statement = require('./statement.js')
+
 class Banking {
-    constructor () {
+    constructor (statement) {
+        this.statement = statement
         this.balance = 0
         this.transactions = []
         this.num = 1
@@ -7,19 +10,20 @@ class Banking {
 
     deposit(amount) {
         this.balance += amount
-        console.log(this.balance)
-        this.transactions.push(1)
+        this.transactions.push({id: this.num, credit: amount})
+        this.statement.addDeposit(amount, this.balance)
+        return this.statement.printStatement()
     }
 
     withdraw(amount) {
         this.balance -= amount
-        this.transactions.push({id: this.num, credit: amount})
+        this.transactions.push({id: this.num, debit: amount})
+        this.statement.addWithdrawal(amount, this.balance)
+        return this.statement.printStatement()
     }
 
     readBalance() {
-        console.log(this.balance)
         return this.balance
-        
     }
 
     readTransactions() {
@@ -27,9 +31,9 @@ class Banking {
     }
 }
 
-// const banking = new Banking()
-// // banking.deposit(100)
-// console.log(banking.readTransactions())
+// const statement = new Statement()
+// const banking = new Banking(statement)
+// console.log(banking.deposit(100))
 
 module.exports = Banking
 
