@@ -27,13 +27,13 @@ class Banking {
     }
 }
 
-// const statement = new Statement()
-// const banking = new Banking(statement)
-// banking.deposit(500)
-// banking.deposit(200)
-// banking.withdraw(100)
-// banking.withdraw(50)
-// console.log(statement.printStatement())
+const statement = new Statement()
+const banking = new Banking(statement)
+banking.deposit(500)
+banking.deposit(200)
+banking.withdraw(100)
+banking.withdraw(50)
+console.log(statement.printStatement())
 
 module.exports = Banking
 

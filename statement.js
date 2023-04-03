@@ -1,6 +1,22 @@
 class Statement {
     constructor() {
         this.transactions = ['date || credit || debit || balance']
+        this.date = null
+    }
+
+    setDate() {
+        // it might not update the date, use getters and setters?
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.getMonth() + 1;
+        const currentDay = currentDate.getDate();
+        const formattedDate = currentDay + '/' + currentMonth + '/' + currentYear;
+        this.date = formattedDate
+    }
+
+    getDate() {
+        this.setDate()
+        return this.date
     }
 
 
@@ -9,11 +25,11 @@ class Statement {
     }
 
     addDeposit(amount, balance) {
-        this.transactions.splice(1, 0, `\n14/01/2023 || ${amount} || || ${balance}`)
+        this.transactions.splice(1, 0, `\n${this.getDate()} || ${amount} || || ${balance}`)
     }
 
     addWithdrawal(amount, balance) {
-        this.transactions.splice(1, 0, `\n14/01/2023 || || ${amount} || ${balance}`)
+        this.transactions.splice(1, 0, `\n${this.getDate()} || || ${amount} || ${balance}`)
     }
 
 
